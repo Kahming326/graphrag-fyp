@@ -1,0 +1,159 @@
+":begin
+CREATE CONSTRAINT UNIQUE_IMPORT_NAME FOR (node:`UNIQUE IMPORT LABEL`) REQUIRE (node.`UNIQUE IMPORT ID`) IS UNIQUE;
+:commit
+CALL db.awaitIndexes(300);
+:begin
+UNWIND [{_id:25, properties:{name:"Fixed-Length Context", description:"Multi-head attention in Transformer is limited by a fixed-length context, which restricts the model's ability to capture long-term dependencies."}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Limitation;
+UNWIND [{_id:9, properties:{name:"Segment-level recurrence"}}, {_id:10, properties:{name:"Relative positional encoding"}}, {_id:11, properties:{name:"Vanilla Transformer"}}, {_id:12, properties:{name:"RNNs"}}, {_id:13, properties:{name:"LSTMs"}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Technique;
+UNWIND [{_id:19, properties:{name:"Perplexity (PPL)"}}, {_id:20, properties:{name:"Effective Context Length (ECL)"}}, {_id:21, properties:{name:"Relative Effective Context Length (RECL)"}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Metric;
+UNWIND [{_id:0, properties:{name:"Zihang Dai"}}, {_id:1, properties:{name:"Zhilin Yang"}}, {_id:2, properties:{name:"Yiming Yang"}}, {_id:3, properties:{name:"Jaime Carbonell"}}, {_id:4, properties:{name:"Quoc V. Le"}}, {_id:5, properties:{name:"Ruslan Salakhutdinov"}}, {_id:28, properties:{name:"Jacob Devlin"}}, {_id:29, properties:{name:"Ming-Wei Chang"}}, {_id:30, properties:{name:"Kenton Lee"}}, {_id:31, properties:{name:"Kristina Toutanova"}}, {_id:49, properties:{name:"Ilya Sutskever"}}, {_id:50, properties:{name:"Oriol Vinyals"}}, {_id:94, properties:{name:"Ashish Vaswani"}}, {_id:95, properties:{name:"Noam Shazeer"}}, {_id:96, properties:{name:"Niki Parmar"}}, {_id:97, properties:{name:"Jakob Uszkoreit"}}, {_id:98, properties:{name:"Llion Jones"}}, {_id:99, properties:{name:"Aidan N. Gomez"}}, {_id:100, properties:{name:"Łukasz Kaiser"}}, {_id:101, properties:{name:"Illia Polosukhin"}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Author;
+UNWIND [{_id:27, properties:{year:2018, title:"BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"}}, {_id:51, properties:{year:2014, title:"Sequence to Sequence Learning with Neural Networks"}}, {_id:102, properties:{title:"Attention is All You Need"}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Paper;
+UNWIND [{_id:8, properties:{name:"Transformer-XL"}}, {_id:32, properties:{name:"BERT"}}, {_id:33, properties:{name:"OpenAI GPT"}}, {_id:34, properties:{name:"ELMo"}}, {_id:52, properties:{name:"LSTM"}}, {_id:53, properties:{name:"RNN"}}, {_id:54, properties:{name:"SMT"}}, {_id:103, properties:{name:"Transformer"}}, {_id:116, properties:{name:"ByteNet"}}, {_id:117, properties:{name:"ConvS2S"}}, {_id:118, properties:{name:"GNMT"}}, {_id:119, properties:{name:"Deep-Att"}}, {_id:120, properties:{name:"MoE"}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Model;
+UNWIND [{_id:26, properties:{name:"Segment-Level Recurrence", description:"Transformer-XL introduces segment-level recurrence, allowing the model to reuse hidden states from previous segments, enabling it to capture longer-term dependencies beyond the fixed-length context."}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Solution;
+UNWIND [{_id:22, properties:{name:"Text generation"}}, {_id:23, properties:{name:"Unsupervised feature learning"}}, {_id:24, properties:{name:"Image and speech modeling"}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Application;
+UNWIND [{_id:35, properties:{name:"Masked Language Model (MLM)"}}, {_id:36, properties:{name:"Next Sentence Prediction (NSP)"}}, {_id:37, properties:{name:"Question Answering"}}, {_id:38, properties:{name:"Natural Language Inference"}}, {_id:39, properties:{name:"Named Entity Recognition"}}, {_id:55, properties:{name:"Sequence-to-Sequence Learning"}}, {_id:56, properties:{name:"Machine Translation"}}, {_id:57, properties:{name:"Rescoring"}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Task;
+UNWIND [{_id:44, properties:{name:"Bidirectional Pre-training"}}, {_id:45, properties:{name:"Fine-tuning"}}, {_id:46, properties:{name:"Feature-based Approach"}}, {_id:47, properties:{name:"Transfer Learning"}}, {_id:48, properties:{name:"Bidirectional Attention"}}, {_id:58, properties:{name:"Reversing Source Sentences"}}, {_id:59, properties:{name:"Long-Term Dependencies"}}, {_id:60, properties:{name:"Fixed-Dimensional Vector Representation"}}, {_id:104, properties:{name:"Attention Mechanism"}}, {_id:105, properties:{name:"Self-Attention"}}, {_id:106, properties:{name:"Multi-Head Attention"}}, {_id:107, properties:{name:"Encoder"}}, {_id:108, properties:{name:"Decoder"}}, {_id:109, properties:{name:"Positional Encoding"}}, {_id:110, properties:{name:"Scaled Dot-Product Attention"}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Concept;
+UNWIND [{_id:14, properties:{name:"WikiText-103"}}, {_id:15, properties:{name:"enwik8"}}, {_id:16, properties:{name:"text8"}}, {_id:17, properties:{name:"One Billion Word"}}, {_id:18, properties:{name:"Penn Treebank"}}, {_id:40, properties:{name:"GLUE"}}, {_id:41, properties:{name:"SQuAD"}}, {_id:42, properties:{name:"SWAG"}}, {_id:43, properties:{name:"CoNLL-2003"}}, {_id:61, properties:{name:"WMT'14 English to French"}}, {_id:114, properties:{name:"WMT 2014 English-to-German"}}, {_id:115, properties:{name:"WMT 2014 English-to-French"}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Dataset;
+UNWIND [{_id:6, properties:{name:"Carnegie Mellon University"}}, {_id:7, properties:{name:"Google Brain"}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Institution;
+:commit
+:begin
+UNWIND [{start: {_id:8}, end: {_id:22}, properties:{}}, {start: {_id:8}, end: {_id:23}, properties:{}}, {start: {_id:8}, end: {_id:24}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:APPLIED_IN]->(end) SET r += row.properties;
+UNWIND [{start: {_id:35}, end: {_id:40}, properties:{}}, {start: {_id:36}, end: {_id:40}, properties:{}}, {start: {_id:37}, end: {_id:41}, properties:{}}, {start: {_id:38}, end: {_id:40}, properties:{}}, {start: {_id:38}, end: {_id:42}, properties:{}}, {start: {_id:39}, end: {_id:43}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:APPLIED_TO]->(end) SET r += row.properties;
+UNWIND [{start: {_id:8}, end: {_id:11}, properties:{}}, {start: {_id:8}, end: {_id:12}, properties:{}}, {start: {_id:8}, end: {_id:13}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:COMPARED_TO]->(end) SET r += row.properties;
+UNWIND [{start: {_id:27}, end: {_id:32}, properties:{}}, {start: {_id:51}, end: {_id:52}, properties:{}}, {start: {_id:51}, end: {_id:53}, properties:{}}, {start: {_id:51}, end: {_id:54}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:DESCRIBES]->(end) SET r += row.properties;
+UNWIND [{start: {_id:103}, end: {_id:114}, properties:{score:28.4}}, {start: {_id:103}, end: {_id:115}, properties:{score:41.0}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:ACHIEVES]->(end) SET r += row.properties;
+UNWIND [{start: {_id:32}, end: {_id:48}, properties:{}}, {start: {_id:103}, end: {_id:104}, properties:{}}, {start: {_id:103}, end: {_id:105}, properties:{}}, {start: {_id:103}, end: {_id:106}, properties:{}}, {start: {_id:103}, end: {_id:107}, properties:{}}, {start: {_id:103}, end: {_id:108}, properties:{}}, {start: {_id:103}, end: {_id:109}, properties:{}}, {start: {_id:103}, end: {_id:110}, properties:{}}, {start: {_id:116}, end: {_id:104}, properties:{}}, {start: {_id:117}, end: {_id:107}, properties:{}}, {start: {_id:118}, end: {_id:108}, properties:{}}, {start: {_id:119}, end: {_id:106}, properties:{}}, {start: {_id:120}, end: {_id:110}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:USES]->(end) SET r += row.properties;
+UNWIND [{start: {_id:52}, end: {_id:55}, properties:{}}, {start: {_id:52}, end: {_id:56}, properties:{}}, {start: {_id:52}, end: {_id:57}, properties:{}}, {start: {_id:53}, end: {_id:55}, properties:{}}, {start: {_id:54}, end: {_id:56}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:USED_FOR]->(end) SET r += row.properties;
+UNWIND [{start: {_id:56}, end: {_id:61}, properties:{}}, {start: {_id:57}, end: {_id:61}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:USES]->(end) SET r += row.properties;
+UNWIND [{start: {_id:8}, end: {_id:9}, properties:{}}, {start: {_id:8}, end: {_id:10}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:USES]->(end) SET r += row.properties;
+UNWIND [{start: {_id:32}, end: {_id:44}, properties:{}}, {start: {_id:32}, end: {_id:45}, properties:{}}, {start: {_id:33}, end: {_id:45}, properties:{}}, {start: {_id:34}, end: {_id:46}, properties:{}}, {start: {_id:52}, end: {_id:48}, properties:{}}, {start: {_id:52}, end: {_id:58}, properties:{}}, {start: {_id:52}, end: {_id:59}, properties:{}}, {start: {_id:52}, end: {_id:60}, properties:{}}, {start: {_id:53}, end: {_id:59}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:IMPLEMENTS]->(end) SET r += row.properties;
+UNWIND [{start: {_id:103}, end: {_id:116}, properties:{}}, {start: {_id:103}, end: {_id:117}, properties:{}}, {start: {_id:103}, end: {_id:118}, properties:{}}, {start: {_id:103}, end: {_id:119}, properties:{}}, {start: {_id:103}, end: {_id:120}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:OUTPERFORMS]->(end) SET r += row.properties;
+UNWIND [{start: {_id:8}, end: {_id:0}, properties:{}}, {start: {_id:8}, end: {_id:1}, properties:{}}, {start: {_id:8}, end: {_id:2}, properties:{}}, {start: {_id:8}, end: {_id:3}, properties:{}}, {start: {_id:8}, end: {_id:4}, properties:{}}, {start: {_id:8}, end: {_id:5}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:PROPOSED_BY]->(end) SET r += row.properties;
+UNWIND [{start: {_id:103}, end: {_id:107}, properties:{}}, {start: {_id:103}, end: {_id:108}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:CONSISTS_OF]->(end) SET r += row.properties;
+UNWIND [{start: {_id:55}, end: {_id:48}, properties:{}}, {start: {_id:55}, end: {_id:58}, properties:{}}, {start: {_id:55}, end: {_id:60}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:ENABLED_BY]->(end) SET r += row.properties;
+UNWIND [{start: {_id:103}, end: {_id:25}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:HAS_LIMITATION]->(end) SET r += row.properties;
+UNWIND [{start: {_id:25}, end: {_id:26}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:ADDRESSED_BY]->(end) SET r += row.properties;
+UNWIND [{start: {_id:8}, end: {_id:14}, properties:{}}, {start: {_id:8}, end: {_id:15}, properties:{}}, {start: {_id:8}, end: {_id:16}, properties:{}}, {start: {_id:8}, end: {_id:17}, properties:{}}, {start: {_id:8}, end: {_id:18}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:EVALUATED_ON]->(end) SET r += row.properties;
+UNWIND [{start: {_id:8}, end: {_id:26}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:ADDRESSES]->(end) SET r += row.properties;
+UNWIND [{start: {_id:44}, end: {_id:35}, properties:{}}, {start: {_id:44}, end: {_id:36}, properties:{}}, {start: {_id:45}, end: {_id:37}, properties:{}}, {start: {_id:45}, end: {_id:38}, properties:{}}, {start: {_id:45}, end: {_id:39}, properties:{}}, {start: {_id:46}, end: {_id:39}, properties:{}}, {start: {_id:47}, end: {_id:37}, properties:{}}, {start: {_id:47}, end: {_id:38}, properties:{}}, {start: {_id:47}, end: {_id:39}, properties:{}}, {start: {_id:48}, end: {_id:37}, properties:{}}, {start: {_id:48}, end: {_id:38}, properties:{}}, {start: {_id:48}, end: {_id:39}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:ENABLES]->(end) SET r += row.properties;
+UNWIND [{start: {_id:47}, end: {_id:45}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:RELATED_TO]->(end) SET r += row.properties;
+UNWIND [{start: {_id:32}, end: {_id:35}, properties:{}}, {start: {_id:32}, end: {_id:36}, properties:{}}, {start: {_id:33}, end: {_id:35}, properties:{}}, {start: {_id:34}, end: {_id:35}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:USES]->(end) SET r += row.properties;
+UNWIND [{start: {_id:42}, end: {_id:38}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:USED_FOR]->(end) SET r += row.properties;
+UNWIND [{start: {_id:48}, end: {_id:44}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:ENABLES]->(end) SET r += row.properties;
+UNWIND [{start: {_id:102}, end: {_id:103}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:INTRODUCES]->(end) SET r += row.properties;
+UNWIND [{start: {_id:94}, end: {_id:102}, properties:{}}, {start: {_id:95}, end: {_id:102}, properties:{}}, {start: {_id:96}, end: {_id:102}, properties:{}}, {start: {_id:97}, end: {_id:102}, properties:{}}, {start: {_id:98}, end: {_id:102}, properties:{}}, {start: {_id:99}, end: {_id:102}, properties:{}}, {start: {_id:100}, end: {_id:102}, properties:{}}, {start: {_id:101}, end: {_id:102}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:WROTE]->(end) SET r += row.properties;
+UNWIND [{start: {_id:32}, end: {_id:42}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:APPLIED_TO]->(end) SET r += row.properties;
+UNWIND [{start: {_id:0}, end: {_id:6}, properties:{}}, {start: {_id:0}, end: {_id:7}, properties:{}}, {start: {_id:1}, end: {_id:6}, properties:{}}, {start: {_id:1}, end: {_id:7}, properties:{}}, {start: {_id:2}, end: {_id:6}, properties:{}}, {start: {_id:3}, end: {_id:6}, properties:{}}, {start: {_id:4}, end: {_id:7}, properties:{}}, {start: {_id:5}, end: {_id:6}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:AFFILIATED_WITH]->(end) SET r += row.properties;
+UNWIND [{start: {_id:8}, end: {_id:19}, properties:{}}, {start: {_id:8}, end: {_id:20}, properties:{}}, {start: {_id:8}, end: {_id:21}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:IMPROVES]->(end) SET r += row.properties;
+UNWIND [{start: {_id:4}, end: {_id:51}, properties:{}}, {start: {_id:28}, end: {_id:27}, properties:{}}, {start: {_id:29}, end: {_id:27}, properties:{}}, {start: {_id:30}, end: {_id:27}, properties:{}}, {start: {_id:31}, end: {_id:27}, properties:{}}, {start: {_id:49}, end: {_id:51}, properties:{}}, {start: {_id:50}, end: {_id:51}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:AUTHORED]->(end) SET r += row.properties;
+UNWIND [{start: {_id:48}, end: {_id:104}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:REFINES]->(end) SET r += row.properties;
+:commit
+:begin
+MATCH (n:`UNIQUE IMPORT LABEL`)  WITH n LIMIT 20000 REMOVE n:`UNIQUE IMPORT LABEL` REMOVE n.`UNIQUE IMPORT ID`;
+:commit
+:begin
+DROP CONSTRAINT UNIQUE_IMPORT_NAME;
+:commit
+"
